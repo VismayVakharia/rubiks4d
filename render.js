@@ -1,6 +1,5 @@
 import * as Cube4D from "./cube4d.js";
 import * as Globals from "./globals.js";
-import { reverse } from "./utils.js";
 
 
 class Quad {
@@ -67,11 +66,13 @@ function get_quads(cubie) {
  * @param {Quad} quad2 
  */
 function compare_quads(quad1, quad2) {
-  let center1 = reverse(quad1.center);
-  let center2 = reverse(quad2.center);
+  let center1 = quad1.center.tolist().reverse();
+  let center2 = quad2.center.tolist().reverse();
 
-  if (center1.equal(center2)) return 0;
-  return center1 < center2 ? -1 : 1;
+  for (let idx in center1) {
+    if (center1[idx] == center2[idx]) continue;
+    return center1[idx] < center2[idx] ? -1 : 1;
+  }
 }
 
 

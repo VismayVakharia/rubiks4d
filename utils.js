@@ -13,11 +13,3 @@ export function shuffle(a) {
   }
   return a;
 }
-
-/**
- * reverse numjs array
- * @param {nj.array} array;
- */
-export function reverse(array) {
-  return array.slice([null, null, -1])
-}
