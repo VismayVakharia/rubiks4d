@@ -25,5 +25,3 @@ sketch.draw = function () {
   render_hypercube(sketch.hyperCube4d, sketch);
   sketch.noLoop();
 }
-
-console.log();

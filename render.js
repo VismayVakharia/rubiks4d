@@ -1,5 +1,6 @@
 import * as Cube4D from "./cube4d.js";
 import * as Globals from "./globals.js";
+import { get_color } from "./utils.js";
 
 
 class Quad {
@@ -17,7 +18,6 @@ class Quad {
     this.color = color;
   }
 }
-
 
 /**
  * main entry point/entry function   // todo: delete this line
@@ -53,7 +53,7 @@ function get_quads(cubie) {
     let normal_vector = nj.zeros(3);
     normal_vector.set(axis_idx, orientation);
     // invoke Quad(cubie_position, normal, color?)
-    quads.push(new Quad(cubie.position, normal_vector, "white"));
+    quads.push(new Quad(cubie.position, normal_vector, get_color(normal_vector)));
   }
   return quads;
 }
@@ -93,6 +93,7 @@ function render_quad(quad, sketch) {
     coords.push(...offsetted.tolist());
   }
   // p5 render quad
+  sketch.fill(quad.color);
   sketch.quad(...coords);
 }
 
